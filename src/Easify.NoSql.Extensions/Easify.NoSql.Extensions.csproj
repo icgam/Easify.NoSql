@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Justin French</Authors>
+    <Company>ICG</Company>
+    <PackageProjectUrl>https://github.com/icgam/Easify.NoSql.git</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/icgam/Easify.NoSql.git</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Easify.Http" Version="1.1.4" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Easify.NoSql.MongoDb\Easify.NoSql.MongoDb.csproj" />
+    <ProjectReference Include="..\Easify.NoSql.MongoDb.ApplicationInsights\Easify.NoSql.MongoDb.ApplicationInsights.csproj" />
+  </ItemGroup>
+
+</Project>

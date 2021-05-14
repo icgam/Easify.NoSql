@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Mohammad Moattar</Authors>
+    <Company>ICG</Company>
+    <Description />
+    <PackageProjectUrl>https://github.com/icgam/Easify.NoSql.git</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/icgam/Easify.NoSql.git</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Easify" Version="1.1.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.9.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Easify.NoSql.MongoDb.ApplicationInsights\Easify.NoSql.MongoDb.ApplicationInsights.csproj" />
+    <ProjectReference Include="..\Easify.NoSql\Easify.NoSql.csproj" />
+  </ItemGroup>
+
+</Project>
