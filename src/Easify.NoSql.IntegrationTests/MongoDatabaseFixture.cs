@@ -17,21 +17,31 @@
 
 
 using System;
+using System.Collections.Generic;
 using Easify.NoSql.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Mongo2Go;
 
 namespace Easify.NoSql.IntegrationTests
 {
-    public class MongoDatabaseFixture
+    public class MongoDatabaseFixture : IDisposable
     {
         public IServiceProvider ServiceProvider { get; }
+        public MongoDbRunner MongoRunner { get; private set; }
 
         public MongoDatabaseFixture()
         {
-            var builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-            var configuration = builder.Build();
+            MongoRunner = MongoDbRunner.Start();
+            
+            var mongoConfiguration = new Dictionary<string, string>
+            {
+                {"MongoDbOptions:ConnectionUrl", MongoRunner.ConnectionString},
+            };
+            
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddInMemoryCollection(mongoConfiguration).Build();
 
             var services = new ServiceCollection();
             services.AddOptions();
@@ -41,6 +51,10 @@ namespace Easify.NoSql.IntegrationTests
             ServiceProvider = services.BuildServiceProvider();
         }
 
-        // todo, need to add coverage for mongo db support with telemetry
+        public void Dispose()
+        {
+            MongoRunner?.Dispose();
+            MongoRunner = null;
+        }
     }
 }

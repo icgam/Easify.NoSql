@@ -22,7 +22,6 @@ namespace Easify.NoSql.MongoDb
     {
         public bool IgnoreExtraElements { get; set; } = true;
         public bool RepresentEnumAsString { get; set; } = true;
-
         public bool EnableTelemetry { get; set; } = false;
     }
 }

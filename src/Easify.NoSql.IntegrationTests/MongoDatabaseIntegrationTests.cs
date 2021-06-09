@@ -36,9 +36,9 @@ namespace Easify.NoSql.IntegrationTests
             _repository = factory?.GetRepository<Student>("SampleDbTests");
         }
 
-        // [Theory]
-        // [InlineData(1, 1, 1, 0)]
-        // [InlineData(3, 2, 3, 0)]
+        [Theory]
+        [InlineData(1, 1, 1, 0)]
+        [InlineData(3, 2, 3, 0)]
         public async Task Should_InsertAndLoad_ReturnsTheRightSetOfDocuments_WhenInsertedOneByOne(int count, int groupId, int expectedGroupOne, int expectedGroupTwo)
         {
             try
@@ -66,10 +66,10 @@ namespace Easify.NoSql.IntegrationTests
             }
         }
 
-        // [Theory]
-        // [InlineData(1, 3, 1, 0)]
-        // [InlineData(3, 4, 3, 0)]
-        public async Task Should_InsertAndLoad_ReturnsTheRightSetOfDocumentss_WhenInsertedInBatch(int count, int groupId, int expectedGroupOne, int expectedGroupTwo)
+        [Theory]
+        [InlineData(1, 3, 1, 0)]
+        [InlineData(3, 4, 3, 0)]
+        public async Task Should_InsertAndLoad_ReturnsTheRightSetOfDocuments_WhenInsertedInBatch(int count, int groupId, int expectedGroupOne, int expectedGroupTwo)
         {
             try
             {
@@ -93,8 +93,8 @@ namespace Easify.NoSql.IntegrationTests
             }
         }
 
-        // [Theory]
-        // [InlineData(4, 5, 6, 5, 0)]
+        [Theory]
+        [InlineData(4, 5, 6, 5, 0)]
         public async Task Should_UpdateAndInsertNewAndLoad_ReturnsTheRightSetOfChanges(int count, int groupId, int targetGroupId, int expectedGroupOne, int expectedGroupTwo)
         {
             try
