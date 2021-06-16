@@ -23,11 +23,11 @@ using MongoDB.Driver;
 
 namespace Easify.NoSql.MongoDb
 {
-    public class MongoDbSort<T> : ISort<T>, IExpandSort<T>
+    public class MongoDbSort<T> : ISortItBy<T>, IThenSortItBy<T>
     {
         public SortDefinition<T> SortDefinition { get; private set; }
 
-        public IExpandSort<T> OrderBy(string field)
+        public IThenSortItBy<T> OrderBy(string field)
         {
             if (field == null) throw new ArgumentNullException(nameof(field));
 
@@ -36,7 +36,7 @@ namespace Easify.NoSql.MongoDb
             return this;
         }
 
-        public IExpandSort<T> OrderByDescending(string field)
+        public IThenSortItBy<T> OrderByDescending(string field)
         {
             if (field == null) throw new ArgumentNullException(nameof(field));
 
@@ -45,7 +45,7 @@ namespace Easify.NoSql.MongoDb
             return this;
         }
 
-        public IExpandSort<T> OrderBy(Expression<Func<T, object>> property)
+        public IThenSortItBy<T> OrderBy(Expression<Func<T, object>> property)
         {
             if (property == null) throw new ArgumentNullException(nameof(property));
 
@@ -54,7 +54,7 @@ namespace Easify.NoSql.MongoDb
             return this;
         }
 
-        public IExpandSort<T> OrderByDescending(Expression<Func<T, object>> property)
+        public IThenSortItBy<T> OrderByDescending(Expression<Func<T, object>> property)
         {
             if (property == null) throw new ArgumentNullException(nameof(property));
 
@@ -63,7 +63,7 @@ namespace Easify.NoSql.MongoDb
             return this;
         }
 
-        public IExpandSort<T> ThenBy(string field)
+        public IThenSortItBy<T> ThenBy(string field)
         {
             if (field == null) throw new ArgumentNullException(nameof(field));
 
@@ -72,7 +72,7 @@ namespace Easify.NoSql.MongoDb
             return this;
         }
 
-        public IExpandSort<T> ThenByDescending(string field)
+        public IThenSortItBy<T> ThenByDescending(string field)
         {
             if (field == null) throw new ArgumentNullException(nameof(field));
 
@@ -81,7 +81,7 @@ namespace Easify.NoSql.MongoDb
             return this;
         }
 
-        public IExpandSort<T> ThenBy(Expression<Func<T, object>> property)
+        public IThenSortItBy<T> ThenBy(Expression<Func<T, object>> property)
         {
             if (property == null) throw new ArgumentNullException(nameof(property));
 
@@ -90,7 +90,7 @@ namespace Easify.NoSql.MongoDb
             return this;
         }
 
-        public IExpandSort<T> ThenByDescending(Expression<Func<T, object>> property)
+        public IThenSortItBy<T> ThenByDescending(Expression<Func<T, object>> property)
         {
             if (property == null) throw new ArgumentNullException(nameof(property));
 

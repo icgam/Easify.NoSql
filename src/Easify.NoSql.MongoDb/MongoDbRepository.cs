@@ -84,21 +84,18 @@ namespace Easify.NoSql.MongoDb
             return InternalGetAsync(condition, query, cancellationToken);
         }
 
-        [Obsolete("Use function with IFindFluent interface")]
-        public virtual Task<T> GetAsync(Expression<Func<T, bool>> condition, Action<ISort<T>> sortAction,
+        public virtual Task<T> GetAsync(Expression<Func<T, bool>> condition, Action<ISortItBy<T>> sortAction,
             CancellationToken cancellationToken)
         {
             var sort = new MongoDbSort<T>();
-            sortAction(sort);
+            sortAction?.Invoke(sort);
 
             return InternalGetAsync(condition, ff => ff.Sort(sort.SortDefinition), cancellationToken);
         }
 
-        [Obsolete("Use function with IFindFluent interface")]
-        public virtual Task<T> GetAsync(Expression<Func<T, bool>> condition, Action<ISort<T>> sortAction)
+        public virtual Task<T> GetAsync(Expression<Func<T, bool>> condition, Action<ISortItBy<T>> sortAction)
         {
             var sort = new MongoDbSort<T>();
-
             sortAction?.Invoke(sort);
 
             return InternalGetAsync(condition, ff => ff.Sort(sort.SortDefinition), CancellationToken.None);
@@ -148,13 +145,13 @@ namespace Easify.NoSql.MongoDb
         }
 
         [Obsolete("Use function with IFindFluent interface")]
-        public virtual Task<List<T>> GetListAsync(Expression<Func<T, bool>> condition, Action<ISort<T>> sortAction)
+        public virtual Task<List<T>> GetListAsync(Expression<Func<T, bool>> condition, Action<ISortItBy<T>> sortAction)
         {
             return GetListAsync(condition, sortAction, CancellationToken.None);
         }
 
         [Obsolete("Use function with IFindFluent interface")]
-        public virtual Task<List<T>> GetListAsync(Expression<Func<T, bool>> condition, Action<ISort<T>> sortAction,
+        public virtual Task<List<T>> GetListAsync(Expression<Func<T, bool>> condition, Action<ISortItBy<T>> sortAction,
             CancellationToken cancellationToken)
         {
             var sort = new MongoDbSort<T>();

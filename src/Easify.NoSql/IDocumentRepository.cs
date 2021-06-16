@@ -34,17 +34,17 @@ namespace Easify.NoSql
         Task<T> GetAsync(Expression<Func<T, bool>> condition);
         Task<T> GetAsync(Specification<T> specification);
 
-        Task<T> GetAsync(Expression<Func<T, bool>> condition, Action<ISort<T>> sortAction,
+        Task<T> GetAsync(Expression<Func<T, bool>> condition, Action<ISortItBy<T>> sortAction,
             CancellationToken cancellationToken);
 
-        Task<T> GetAsync(Expression<Func<T, bool>> condition, Action<ISort<T>> sortAction);
+        Task<T> GetAsync(Expression<Func<T, bool>> condition, Action<ISortItBy<T>> sortAction);
 
         Task<List<T>> GetListAsync();
         Task<List<T>> GetListAsync(Specification<T> specification);
         Task<List<T>> GetListAsync(Specification<T> specification, CancellationToken cancellationToken);
         Task<List<T>> GetListAsync(Expression<Func<T, bool>> condition);
-        Task<List<T>> GetListAsync(Expression<Func<T, bool>> condition, Action<ISort<T>> sortAction);
-        Task<List<T>> GetListAsync(Expression<Func<T, bool>> condition, Action<ISort<T>> sortAction,
+        Task<List<T>> GetListAsync(Expression<Func<T, bool>> condition, Action<ISortItBy<T>> sortAction);
+        Task<List<T>> GetListAsync(Expression<Func<T, bool>> condition, Action<ISortItBy<T>> sortAction,
             CancellationToken cancellationToken);
         Task<List<T>> GetListAsync(Expression<Func<T, bool>> condition,
             CancellationToken cancellationToken);

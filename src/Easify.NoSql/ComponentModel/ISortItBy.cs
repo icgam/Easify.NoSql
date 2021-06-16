@@ -21,11 +21,11 @@ using System.Linq.Expressions;
 
 namespace Easify.NoSql.ComponentModel
 {
-    public interface ISort<T>
+    public interface ISortItBy<T>
     {
-        IExpandSort<T> OrderBy(string field);
-        IExpandSort<T> OrderByDescending(string field);
-        IExpandSort<T> OrderBy(Expression<Func<T, object>> property);
-        IExpandSort<T> OrderByDescending(Expression<Func<T, object>> property);
+        IThenSortItBy<T> OrderBy(string field);
+        IThenSortItBy<T> OrderByDescending(string field);
+        IThenSortItBy<T> OrderBy(Expression<Func<T, object>> property);
+        IThenSortItBy<T> OrderByDescending(Expression<Func<T, object>> property);
     }
 }

@@ -130,17 +130,23 @@ public interface IMongoDbRepository<T> : IDocumentRepository<T>
 ```
 
 ### Usage
-s
+
 To use the repository, You can inject the repository to your class and all the relevant methods will be available to use. If you have selected WithTelemetry, ensure that the InstrumentationKey for your target application insights resource has been configured either in your calling application config: 
 
 ```c#
 "ApplicationInsights": {
-    /* Run this command to get your Instrumentation key
-    az resource show --resource-group HoldingsFeedDevResourceGroup --name HoldingsFeedDevAppInsights --resource-type        "Microsoft.Insights/components" --query properties.InstrumentationKey
-    */
     "InstrumentationKey": "########-####-####-####-############"
-  }
+}
 ```
+
+To get the instrumentation key run the below command:
+
+```
+
+az resource show --resource-group <resource group> --name <app insight name> --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey
+
+```
+
 or set as an Environment Variable on the hosting server.
 
 ### Best Practices
